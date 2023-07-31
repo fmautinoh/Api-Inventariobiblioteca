@@ -27,8 +27,33 @@ namespace Api_Inventariobiblioteca.Controllers
             _LibroAutorepo = LibroAutorepo;
             _mapper = mapper;
         }
+
+        [HttpGet]
+        [Route("/ListaLibro")]
+        [ProducesResponseType(200)]//ok
+        [ProducesResponseType(400)]//badreq
+        [ProducesResponseType(404)]//no found
+        public async Task<ActionResult<APIResponse>> GetLibro()
+        {
+            try
+            {
+                IEnumerable<LibroDto> autorlist = (IEnumerable<LibroDto>) await _vistalibrorepo.ListObjetos();
+                _apiResponse.Alertmsg = "Listado Exitosamente";
+                _apiResponse.Resultado = _mapper.Map<IEnumerable<LibroDto>>(autorlist);
+                _apiResponse.StatusCode = HttpStatusCode.OK;
+                return Ok(_apiResponse);
+            }
+            catch (Exception ex)
+            {
+                _apiResponse.IsSuccess = false;
+                _apiResponse.ErrorMessage = new List<string> { ex.ToString() };
+            }
+            return _apiResponse;
+        }
+
+
         [HttpPost]
-        [Route("/CreateAutor")]
+        [Route("/CreateLibro")]
         [ProducesResponseType(200)]//ok
         [ProducesResponseType(400)]//badreq
         [ProducesResponseType(500)]//Internal Error
@@ -37,7 +62,7 @@ namespace Api_Inventariobiblioteca.Controllers
         [ProducesResponseType(409)]//no found
 
 
-        public async Task<ActionResult<APIResponse>> CrearAutor([FromBody] LibroCreatedDto ModelLibro)
+        public async Task<ActionResult<APIResponse>> CrearLibro([FromBody] LibroCreatedDto ModelLibro)
         {
             try
             {

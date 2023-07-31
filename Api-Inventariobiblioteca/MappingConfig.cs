@@ -10,6 +10,11 @@ namespace APICL
         public MappingConfig()
         {
             CreateMap<Autore, AutorDto>().ReverseMap();
+            CreateMap<LibroDto, VLibro>().ReverseMap();
+            CreateMap<TipoAutorDto, TipoAutor>().ReverseMap();
+            CreateMap<TipoLibroDto, TipoLibro>().ReverseMap();
+
+
 
         }
     }

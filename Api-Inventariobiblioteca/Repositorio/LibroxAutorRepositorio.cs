@@ -1,5 +1,6 @@
 ﻿using Api_Inventariobiblioteca.Models;
 using Api_Inventariobiblioteca.Repositorio.IRepositorio;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api_Inventariobiblioteca.Repositorio
 {

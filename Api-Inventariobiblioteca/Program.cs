@@ -27,8 +27,9 @@ builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddScoped<IAutorRepositorio, AutorRepositorio>();
 builder.Services.AddScoped<ITipoAutorRepositorio, TipoAutorRepositorio>();
 builder.Services.AddScoped<ITipoLibroRepositorio, TipoLibroRepositorio>();
-builder.Services.AddScoped<ITipoLibroRepositorio, TipoLibroRepositorio>();
 builder.Services.AddScoped<ILibroRepositorio, LibroRepositorio>();
+builder.Services.AddScoped<ILibroxAutorRepositorio, LibroxAutorRepositorio>();
+builder.Services.AddScoped<Ivlibrorepositorio, vlibrorepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
